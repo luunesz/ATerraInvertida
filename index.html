@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>A Terra Invertida</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IM+Fell+English+SC&family=Spectral:ital,wght@0,300;0,400;1,300;1,400&display=swap">
+<link rel="stylesheet" href="estiloIndex.css">
+</head>
+<body>
+
+<div class="fog" aria-hidden="true"><i></i><i></i></div>
+
+<main class="frame">
+  <header class="plate">
+    <div class="orb-wrap">
+      <div class="orb">
+        <canvas id="globe" role="img" aria-label="Um globo terrestre girando de cabeça para baixo"></canvas>
+      </div>
+    </div>
+    <div class="copy">
+      <p class="eyebrow">Em desenvolvimento por Lune</p>
+      <h1>A Terra <span class="inv" data-t="Invertida">Invertida</span></h1>
+      <p class="sub">Um RPG baseado nos sistemas de Ordem II e Call of Cthulhu.</p>
+    </div>
+  </header>
+
+  <section class="vault" aria-labelledby="vault-title">
+    <h2 id="vault-title">Arquivos selados</h2>
+    <ul>
+      <li>
+        <a class="file" href="mundo.html">
+          <h3>O Mundo</h3>
+          <p>Geografia, nações e a lógica de um planeta virado ao contrário.</p>
+          <span class="tag">Abrir →</span>
+        </a>
+      </li>
+      <li>
+        <a class="file" href="investigadores.html">
+          <h3>Investigadores</h3>
+          <p>Criação de personagens e fichas.</p>
+          <span class="tag">Abrir →</span>
+        </a>
+      </li>
+      <li>
+        <a class="file" href="sistema.html">
+          <h3>O Sistema</h3>
+          <p>Regras adaptadas de Ordem II e Call of Cthulhu.</p>
+          <span class="tag">Abrir →</span>
+        </a>
+      </li>
+      <li>
+        <a class="file" href="diario.html">
+          <h3>Diário de Campanha</h3>
+          <p>Registros das sessões e pistas encontradas.</p>
+          <span class="tag">Abrir →</span>
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <p class="foot">A Terra Invertida · <span class="flip" aria-hidden="true">ɐpıʇɹǝʌuI ɐɹɹǝ⊥ ∀</span></p>
+</main>
+
+<script>
+(function () {
+  var cv = document.getElementById('globe');
+  var ctx = cv.getContext('2d');
+  var cs = getComputedStyle(document.documentElement);
+  var spectre = cs.getPropertyValue('--spectre').trim() || '#b4f1c6';
+  var eye = cs.getPropertyValue('--eye').trim() || '#f2fff4';
+  var grat = cs.getPropertyValue('--grat').trim() || '#25613f';
+
+  var W = 0, H = 0, R = 0;
+  function size() {
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var r = cv.getBoundingClientRect();
+    W = r.width; H = r.height;
+    cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    R = Math.min(W, H) / 2 - 6;
+  }
+
+  // Terra de continentes inventados: pontos numa esfera, "terra" onde o ruído passa do limiar.
+  var land = [];
+  var N = 2600, golden = Math.PI * (3 - Math.sqrt(5));
+  for (var i = 0; i < N; i++) {
+    var y = 1 - 2 * (i + 0.5) / N;
+    var rr = Math.sqrt(1 - y * y);
+    var ph = i * golden;
+    var x = Math.cos(ph) * rr, z = Math.sin(ph) * rr;
+    var v = Math.sin(3 * x + 1.2) * Math.cos(2.4 * y - 0.5) + Math.sin(2.2 * z + 3 * y) * 0.7 + Math.cos(4 * x + 2 * z) * 0.35;
+    if (v > 0.5) land.push([x, y, z]);
+  }
+
+  var TILT = Math.PI - 0.41; // polo norte virado para baixo
+  var cT = Math.cos(TILT), sT = Math.sin(TILT);
+  function project(p, a) {
+    var ca = Math.cos(a), sa = Math.sin(a);
+    var x1 = p[0] * ca + p[2] * sa;
+    var z1 = -p[0] * sa + p[2] * ca;
+    var y2 = p[1] * cT - z1 * sT;
+    var z2 = p[1] * sT + z1 * cT;
+    return [W / 2 + x1 * R, H / 2 - y2 * R, z2];
+  }
+
+  function graticule(a) {
+    ctx.lineWidth = 0.7;
+    ctx.strokeStyle = grat;
+    var lats = [-60, -30, 0, 30, 60], k, d, q, pt, started;
+    for (k = 0; k < lats.length; k++) {
+      var la = lats[k] * Math.PI / 180, cy = Math.sin(la), cr = Math.cos(la);
+      ctx.beginPath(); started = false;
+      for (d = 0; d <= 360; d += 6) {
+        q = d * Math.PI / 180;
+        pt = project([Math.cos(q) * cr, cy, Math.sin(q) * cr], a);
+        if (pt[2] > 0) { if (!started) { ctx.moveTo(pt[0], pt[1]); started = true; } else ctx.lineTo(pt[0], pt[1]); }
+        else started = false;
+      }
+      ctx.globalAlpha = 0.7; ctx.stroke();
+    }
+    for (k = 0; k < 12; k++) {
+      var lo = k * Math.PI / 6;
+      ctx.beginPath(); started = false;
+      for (d = -90; d <= 90; d += 6) {
+        q = d * Math.PI / 180;
+        pt = project([Math.cos(lo) * Math.cos(q), Math.sin(q), Math.sin(lo) * Math.cos(q)], a);
+        if (pt[2] > 0) { if (!started) { ctx.moveTo(pt[0], pt[1]); started = true; } else ctx.lineTo(pt[0], pt[1]); }
+        else started = false;
+      }
+      ctx.globalAlpha = 0.6; ctx.stroke();
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  function draw(a) {
+    ctx.clearRect(0, 0, W, H);
+    var g = ctx.createRadialGradient(W / 2, H / 2, R * 0.6, W / 2, H / 2, R * 1.05);
+    g.addColorStop(0, 'rgba(95,216,150,0)');
+    g.addColorStop(1, 'rgba(95,216,150,0.26)');
+    ctx.fillStyle = g;
+    ctx.beginPath(); ctx.arc(W / 2, H / 2, R, 0, Math.PI * 2); ctx.fill();
+    graticule(a);
+    for (var i = 0; i < land.length; i++) {
+      var p = project(land[i], a);
+      if (p[2] <= 0) continue;
+      ctx.fillStyle = p[2] > 0.92 ? eye : spectre; // o centro do globo brilha como os olhos na floresta
+      ctx.globalAlpha = 0.25 + 0.75 * p[2];
+      var s = 0.9 + p[2] * 1.1;
+      ctx.fillRect(p[0] - s / 2, p[1] - s / 2, s, s);
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  size();
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) { draw(0.8); window.addEventListener('resize', function () { size(); draw(0.8); }); return; }
+  window.addEventListener('resize', size);
+  var t0 = performance.now();
+  function frame(now) {
+    draw(-(now - t0) / 1000 * 0.22); // gira no sentido contrário ao da Terra que conhecemos
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>

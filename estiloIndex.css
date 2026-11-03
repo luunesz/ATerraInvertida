@@ -1,0 +1,195 @@
+/* A Terra Invertida — estilo compartilhado por index.html e pelas páginas dos arquivos.
+   Layout: moldura dupla > faixa arredondada (globo à esquerda, título à direita) > arquivos selados abaixo.
+   Paleta: preto esverdeado e verde fosforescente, como a ilustração da floresta.
+   O risco: o globo gira de cabeça para baixo e o título tem reflexo invertido. */
+
+:root {
+  --bg: #030705;
+  --bg-raise: #07120c;
+  --line: #12301f;
+  --line-hi: #2d7a4f;
+  --ring: #3fae75;
+  --grat: #25613f;
+  --spectre: #b4f1c6;
+  --phosphor: #5fd896;
+  --mid: #5fae82;
+  --eye: #f2fff4;
+  --ink: #d4ecd9;
+  --muted: #7fa38b;
+  --fog: rgba(60, 160, 100, 0.12);
+  --fog2: rgba(30, 100, 60, 0.12);
+  --font-display: 'IM Fell English SC', 'Iowan Old Style', Georgia, serif;
+  --font-body: 'Spectral', 'Iowan Old Style', Georgia, serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+html { background: var(--bg); }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.55;
+  padding-block: 28px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+a:focus-visible { outline: 2px solid var(--phosphor); outline-offset: 4px; }
+
+/* Névoa ao fundo */
+.fog { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+.fog i {
+  position: absolute; width: 70vmax; height: 70vmax; border-radius: 50%;
+  background: radial-gradient(closest-side, var(--fog), transparent);
+  filter: blur(30px);
+  animation: drift 38s ease-in-out infinite alternate;
+}
+.fog i:nth-child(1) { left: -20vmax; top: -10vmax; }
+.fog i:nth-child(2) {
+  right: -25vmax; bottom: -20vmax; animation-duration: 52s; animation-direction: alternate-reverse;
+  background: radial-gradient(closest-side, var(--fog2), transparent);
+}
+@keyframes drift {
+  from { transform: translate(0, 0) scale(1); }
+  to { transform: translate(8vmax, 5vmax) scale(1.15); }
+}
+
+/* Moldura */
+.frame {
+  position: relative; z-index: 1;
+  max-width: 1080px; margin: 0 auto;
+  border: 2px solid var(--line-hi);
+  padding: clamp(14px, 3.2vw, 38px);
+  display: grid; gap: clamp(22px, 4vw, 40px);
+  background: linear-gradient(180deg, rgba(7, 18, 12, 0.6), rgba(3, 7, 5, 0.2));
+}
+.frame::before {
+  content: ""; position: absolute; inset: 6px; border: 1px solid var(--line); pointer-events: none;
+}
+
+/* Faixa do título */
+.plate {
+  position: relative;
+  border: 2px solid var(--ring);
+  border-radius: clamp(32px, 9vw, 110px);
+  padding: clamp(20px, 3.4vw, 40px) clamp(20px, 4vw, 52px);
+  display: grid; grid-template-columns: minmax(150px, 270px) minmax(0, 1fr);
+  gap: clamp(20px, 4vw, 48px); align-items: center;
+  background: radial-gradient(120% 140% at 15% 50%, rgba(95, 216, 150, 0.10), transparent 60%), var(--bg-raise);
+  box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.6), 0 0 50px -18px var(--phosphor);
+}
+
+.orb-wrap { display: grid; justify-items: center; min-width: 0; }
+.orb {
+  position: relative; width: 100%; max-width: 270px; aspect-ratio: 1;
+  border-radius: 50%; border: 2px solid var(--ring);
+  background: radial-gradient(circle at 50% 42%, #0d2316, #020503 72%);
+  box-shadow: 0 0 36px -6px rgba(95, 216, 150, 0.5), inset 0 0 28px rgba(0, 0, 0, 0.85);
+}
+.orb canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+
+.copy { min-width: 0; }
+.eyebrow {
+  font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--mid); margin: 0 0 14px;
+}
+h1 {
+  font-family: var(--font-display); font-weight: 400;
+  font-size: clamp(2.5rem, 7.2vw, 5.1rem); line-height: 0.98;
+  letter-spacing: 0.015em; margin: 0 0 0.5em; color: var(--ink);
+  text-wrap: balance;
+  text-shadow: 0 0 28px rgba(95, 216, 150, 0.28);
+}
+.inv { position: relative; display: inline-block; color: var(--spectre); text-shadow: 0 0 22px rgba(95, 216, 150, 0.55); }
+.inv::after {
+  content: attr(data-t);
+  position: absolute; left: 0; top: 100%; width: 100%; white-space: nowrap;
+  transform: scaleY(-1);
+  -webkit-mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.4), transparent 62%);
+  mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.4), transparent 62%);
+  pointer-events: none; user-select: none;
+}
+.sub {
+  font-style: italic; font-weight: 300; font-size: clamp(1.05rem, 2.2vw, 1.3rem);
+  color: var(--ink); margin: 0; max-width: 34ch; text-wrap: pretty;
+}
+
+/* Arquivos selados */
+.vault h2 {
+  font-family: var(--font-mono); font-weight: 400; font-size: 12px; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--muted); margin: 0 0 14px;
+}
+.vault ul {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; gap: 14px 22px; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+}
+.vault li { min-width: 0; }
+.file {
+  display: grid; gap: 4px; align-content: start; height: 100%;
+  border-top: 1px solid var(--line-hi); padding-top: 12px;
+  transition: border-color 0.2s ease;
+}
+.file h3 {
+  font-family: var(--font-display); font-weight: 400; font-size: 1.4rem; margin: 0; letter-spacing: 0.02em;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+.file p { margin: 0; color: var(--muted); font-size: 0.95rem; line-height: 1.45; }
+.tag {
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--mid); margin-top: 4px;
+}
+.file:hover, .file:focus-visible { border-top-color: var(--phosphor); }
+.file:hover h3, .file:focus-visible h3 { color: var(--spectre); text-shadow: 0 0 18px rgba(95, 216, 150, 0.55); }
+
+/* Rodapé */
+.foot {
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--muted); margin: 0; text-align: right;
+}
+.flip { font-family: var(--font-mono), 'DejaVu Sans Mono', 'Segoe UI Symbol', 'Noto Sans Math', sans-serif; }
+
+/* Páginas dos arquivos */
+.topnav {
+  display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 10px 24px;
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--muted);
+}
+.topnav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 20px; }
+.topnav a { padding-block: 4px; border-bottom: 1px solid transparent; transition: color 0.2s ease, border-color 0.2s ease; }
+.topnav a:hover { color: var(--spectre); border-bottom-color: var(--line-hi); }
+.topnav a[aria-current="page"] { color: var(--phosphor); border-bottom-color: var(--phosphor); }
+.topnav .back { color: var(--mid); }
+
+.page-title {
+  border: 2px solid var(--ring); border-radius: clamp(28px, 6vw, 72px);
+  padding: clamp(22px, 4vw, 44px) clamp(20px, 4vw, 52px);
+  background: radial-gradient(120% 140% at 10% 50%, rgba(95, 216, 150, 0.09), transparent 60%), var(--bg-raise);
+  box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.6), 0 0 50px -18px var(--phosphor);
+}
+.page-title h1 { font-size: clamp(2.2rem, 6vw, 4rem); margin-bottom: 0.35em; }
+.stub {
+  border: 1px dashed var(--line-hi); padding: 22px clamp(16px, 3vw, 28px);
+  color: var(--muted); font-style: italic; margin: 0; max-width: 60ch;
+}
+
+@media (max-width: 720px) {
+  .plate { grid-template-columns: minmax(0, 1fr); justify-items: center; text-align: center; border-radius: 40px; }
+  .orb-wrap { width: min(100%, 230px); }
+  .sub { margin-inline: auto; }
+  .foot { text-align: left; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fog i { animation: none; }
+  .file, .file h3, .topnav a { transition: none; }
+}
