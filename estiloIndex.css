@@ -1,4 +1,5 @@
 /* A Terra Invertida — estilo compartilhado por index.html e pelas páginas dos arquivos.
+   Feito por Lune, @luunesz.
    Layout: moldura dupla > faixa arredondada (globo à esquerda, título à direita) > arquivos selados abaixo.
    Paleta: preto esverdeado e verde fosforescente, como a ilustração da floresta.
    O risco: o globo gira de cabeça para baixo e o título tem reflexo invertido. */
@@ -14,6 +15,7 @@
   --phosphor: #5fd896;
   --mid: #5fae82;
   --eye: #f2fff4;
+  --rim-rgb: 95, 216, 150;
   --ink: #d4ecd9;
   --muted: #7fa38b;
   --fog: rgba(60, 160, 100, 0.12);
@@ -41,6 +43,7 @@ body {
   min-height: 100vh;
   position: relative;
   overflow-x: hidden;
+  display: flex; flex-direction: column;
 }
 
 a { color: inherit; text-decoration: none; }
@@ -67,7 +70,7 @@ a:focus-visible { outline: 2px solid var(--phosphor); outline-offset: 4px; }
 /* Moldura */
 .frame {
   position: relative; z-index: 1;
-  max-width: 1080px; margin: 0 auto;
+  width: 100%; max-width: 1080px; margin: 0 auto;
   border: 2px solid var(--line-hi);
   padding: clamp(14px, 3.2vw, 38px);
   display: grid; gap: clamp(22px, 4vw, 40px);
@@ -150,6 +153,14 @@ h1 {
 }
 .file:hover, .file:focus-visible { border-top-color: var(--phosphor); }
 .file:hover h3, .file:focus-visible h3 { color: var(--spectre); text-shadow: 0 0 18px rgba(95, 216, 150, 0.55); }
+
+/* Crédito no canto inferior da página */
+.credito {
+  position: relative; z-index: 1;
+  margin: auto 0 0; padding-top: 22px; text-align: right;
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.08em;
+  color: var(--muted);
+}
 
 /* Rodapé */
 .foot {
