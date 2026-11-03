@@ -7,6 +7,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IM+Fell+English+SC&family=Spectral:ital,wght@0,300;0,400;1,300;1,400&display=swap">
+<link rel="icon" type="image/gif" href="icone.gif">
+<!-- Segunda versão do visual: troque estiloIndex.css por estiloIndex2.css (nas 5 páginas) -->
 <link rel="stylesheet" href="estiloIndex.css">
 </head>
 <body>
@@ -72,6 +74,7 @@
   var spectre = cs.getPropertyValue('--spectre').trim() || '#b4f1c6';
   var eye = cs.getPropertyValue('--eye').trim() || '#f2fff4';
   var grat = cs.getPropertyValue('--grat').trim() || '#25613f';
+  var rim = cs.getPropertyValue('--rim-rgb').trim() || '95, 216, 150';
 
   var W = 0, H = 0, R = 0;
   function size() {
@@ -138,8 +141,8 @@
   function draw(a) {
     ctx.clearRect(0, 0, W, H);
     var g = ctx.createRadialGradient(W / 2, H / 2, R * 0.6, W / 2, H / 2, R * 1.05);
-    g.addColorStop(0, 'rgba(95,216,150,0)');
-    g.addColorStop(1, 'rgba(95,216,150,0.26)');
+    g.addColorStop(0, 'rgba(' + rim + ',0)');
+    g.addColorStop(1, 'rgba(' + rim + ',0.26)');
     ctx.fillStyle = g;
     ctx.beginPath(); ctx.arc(W / 2, H / 2, R, 0, Math.PI * 2); ctx.fill();
     graticule(a);
