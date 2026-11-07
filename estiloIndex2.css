@@ -19,6 +19,8 @@
   --ink: #e3dcc2;
   --muted: #968f72;
   --rim-rgb: 138, 128, 64;
+  --stamp: #ff7f2e;
+  --paper: #1a160d;
   --fog: rgba(120, 110, 50, 0.16);
   --fog2: rgba(150, 70, 30, 0.09);
   --font-display: 'IM Fell English SC', 'Iowan Old Style', Georgia, serif;
@@ -188,7 +190,7 @@ h1 {
 .topnav ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 20px; }
 .topnav a { padding-block: 4px; border-bottom: 1px solid transparent; transition: color 0.2s ease, border-color 0.2s ease; }
 .topnav a:hover { color: var(--spectre); border-bottom-color: var(--line-hi); }
-.topnav a[aria-current="page"] { color: var(--ember); border-bottom-color: var(--ember); }
+.topnav a[aria-current] { color: var(--ember); border-bottom-color: var(--ember); }
 .topnav .back { color: var(--mid); }
 
 .page-title {
@@ -202,6 +204,52 @@ h1 {
   border: 1px dashed var(--line-hi); padding: 22px clamp(16px, 3vw, 28px);
   color: var(--muted); font-style: italic; margin: 0; max-width: 60ch;
 }
+
+/* Documento de arquivo (relatório) */
+.doc {
+  position: relative; min-width: 0;
+  background: linear-gradient(180deg, rgba(var(--rim-rgb), 0.05), transparent 30%), var(--paper);
+  border: 1px solid var(--line-hi);
+  box-shadow: inset 0 0 80px rgba(0, 0, 0, 0.55), 0 18px 50px -24px rgba(0, 0, 0, 0.9);
+  padding: clamp(18px, 4vw, 52px);
+  font-family: var(--font-mono); font-size: 14.5px; line-height: 1.75;
+  display: grid; gap: 26px;
+}
+.doc-head {
+  display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: 18px 28px;
+  border-bottom: 2px solid var(--line-hi); padding-bottom: 20px;
+}
+.doc-org { margin: 0; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+.doc-title {
+  font-family: var(--font-display); font-weight: 400; text-shadow: none;
+  font-size: clamp(1.7rem, 5vw, 2.6rem); line-height: 1.05; letter-spacing: 0.02em; margin: 8px 0;
+}
+.carimbo {
+  margin: 0; text-align: center; line-height: 1.1;
+  font-family: var(--font-display); text-transform: uppercase; letter-spacing: 0.18em;
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  color: var(--stamp); border: 3px double var(--stamp); padding: 8px 14px;
+  transform: rotate(-5deg); opacity: 0.88;
+}
+.carimbo small { display: block; margin-top: 5px; font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.14em; }
+.doc-id { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px 28px; margin: 0; }
+.doc-id div { border-bottom: 1px dotted var(--line-hi); padding-bottom: 6px; min-width: 0; }
+.doc-id dt { font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+.doc-id dd { margin: 2px 0 0; overflow-wrap: anywhere; }
+.doc-sec { display: grid; gap: 6px; max-width: 74ch; min-width: 0; }
+.doc-sec h2 {
+  margin: 0; font-weight: 400; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mid);
+}
+.doc-sec h2 span { color: var(--muted); }
+.doc-sec p { margin: 0; text-wrap: pretty; }
+.doc strong { font-weight: 400; color: var(--spectre); background: rgba(var(--rim-rgb), 0.14); padding: 0 0.25em; }
+.doc-conc { border: 1px solid var(--stamp); padding: 14px 18px; }
+.rasura { background: var(--ink); color: transparent; user-select: none; border-radius: 1px; padding: 0 0.2em; }
+.doc-sign {
+  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 18px 40px;
+  font-size: 12px; line-height: 1.6; color: var(--muted);
+}
+.doc-sign div { flex: 1 1 220px; min-width: 0; border-top: 1px solid var(--line-hi); padding-top: 8px; }
 
 @media (max-width: 720px) {
   .plate { grid-template-columns: minmax(0, 1fr); justify-items: center; text-align: center; border-radius: 40px; }
