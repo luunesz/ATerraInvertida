@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IM+Fell+English+SC&family=Spectral:ital,wght@0,300;0,400;1,300;1,400&display=swap">
 <link rel="icon" type="image/png" href="icone1.png">
 <script src="icone.js" defer></script>
+<!-- Segunda versão do visual: troque estiloIndex.css por estiloIndex2.css (em todas as páginas) -->
 <link rel="stylesheet" href="estiloIndex.css">
 </head>
 <body>
@@ -31,22 +32,72 @@
   <header class="page-title">
     <p class="eyebrow">Arquivo selado</p>
     <h1>O Mundo</h1>
-    <p class="sub">Geografia, nações e a lógica de um planeta virado ao contrário.</p>
+    <p class="sub">Um mundo igual ao nosso, com algo errado nele.</p>
   </header>
 
-  <p class="stub">Esta página ainda está sendo escrita.</p>
+  <blockquote class="prologo">
+    <p>Tudo no caminho de casa estava como sempre. A padaria já tinha aberto, o ônibus passou na hora, a mulher do 12 regava as plantas sem olhar para ninguém.</p>
+    <p>O cachorro do vizinho é que não latiu. Ficou parado diante do poste, de orelhas baixas, olhando para um ponto onde não havia nada.</p>
+    <p>Atravessei a rua. Não quis saber. Na semana seguinte o cachorro sumiu e ninguém comentou.</p>
+    <footer>Trecho de diário · autor desconhecido</footer>
+  </blockquote>
 
-  <section class="vault" aria-labelledby="docs-titulo">
-    <h2 id="docs-titulo">Documentos do arquivo</h2>
-    <ul>
-      <li>
-        <a class="file" href="relatorio-0417.html">
-          <h3>Relatório de Necropsia 0417/T</h3>
-          <p>Um investigador de férias é encontrado morto em casa, com uma única perfuração no tórax e o corpo ressecado. Agente não identificado.</p>
-          <span class="tag">Confidencial · Abrir →</span>
-        </a>
+  <section class="bloco" aria-labelledby="t-terra">
+    <h2 id="t-terra">A Terra que você conhece</h2>
+    <p class="aviso">Esta não é a Terra que você conhece por inteiro.</p>
+    <p>As cidades, as pessoas e o noticiário estão onde deveriam estar. Mesmo assim, há algo de errado com ela. O globo de cabeça para baixo na entrada deste site é o aviso.</p>
+  </section>
+
+  <section class="bloco" aria-labelledby="t-agem">
+    <h2 id="t-agem">Como elas agem</h2>
+    <dl class="regras">
+      <div>
+        <dt>Elas já estão aqui</dt>
+        <dd>As criaturas vagam pela Terra e sempre vagaram. As pessoas não sabem que elas existem.</dd>
+      </div>
+      <div>
+        <dt>Algo as atrai</dt>
+        <dd>Nada surge do nada. Um gatilho ou um cenário que as estimule chama a criatura até a vítima.</dd>
+      </div>
+      <div>
+        <dt>Quem vê paga ou não é acreditado</dt>
+        <dd>Quem cruza com uma delas tem um destino cruel. Quando sobrevive, o que viu é tratado como uma ilusão passageira.</dd>
+      </div>
+    </dl>
+  </section>
+
+  <section class="bloco" aria-labelledby="t-niveis">
+    <h2 id="t-niveis">O que se sabe, e quem sabe</h2>
+    <ol class="camadas">
+      <li class="camada" data-nivel="1">
+        <div>
+          <p class="nivel">Nível 1 · Público</p>
+          <h3>O que todos sabem</h3>
+        </div>
+        <p>De vez em quando surgem relatos de uma pessoa que está sendo assombrada. A sociedade lida com isso como sempre lidou: com tratamento psicológico, com a busca pela fé ou ignorando o assunto.</p>
       </li>
-    </ul>
+      <li class="camada" data-nivel="2">
+        <div>
+          <p class="nivel">Nível 2 · Boatos</p>
+          <h3>O que alguns suspeitam</h3>
+        </div>
+        <p>Existem especulações e grupos que compartilham seus encontros e as aparições dessas criaturas. Com o tempo, eles foram perdendo força e viraram palco para contadores de histórias de terror.</p>
+      </li>
+      <li class="camada" data-nivel="3">
+        <div>
+          <p class="nivel">Nível 3 · Restrito</p>
+          <h3>O que poucos viram</h3>
+        </div>
+        <div>
+          <p>Oficialmente, existe uma organização que se dedica a investigar e catalogar essas criaturas: os <strong>Observadores de Campo de Entidades Sobrenaturais</strong>, os OCES.</p>
+          <a class="file" href="relatorio-0417.html">
+            <h3>Relatório de Necropsia 0417/T</h3>
+            <p>Um investigador de férias é encontrado morto em casa, com uma única perfuração no tórax e o corpo ressecado. Agente não identificado.</p>
+            <span class="tag">Confidencial · Abrir →</span>
+          </a>
+        </div>
+      </li>
+    </ol>
   </section>
 
   <p class="foot">A Terra Invertida · <span class="flip" aria-hidden="true">ɐpıʇɹǝʌuI ɐɹɹǝ⊥ ∀</span></p>

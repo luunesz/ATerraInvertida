@@ -241,6 +241,48 @@ h1 {
 }
 .doc-sign div { flex: 1 1 220px; min-width: 0; border-top: 1px solid var(--line-hi); padding-top: 8px; }
 
+/* Página O Mundo */
+.bloco { display: grid; gap: 12px; min-width: 0; }
+.bloco h2 {
+  font-family: var(--font-mono); font-weight: 400; font-size: 12px; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--muted); margin: 0;
+}
+.bloco p { margin: 0; max-width: 66ch; text-wrap: pretty; }
+.prologo {
+  margin: 0; max-width: 62ch; display: grid; gap: 14px;
+  font-style: italic; font-weight: 300; font-size: clamp(1.1rem, 2.4vw, 1.35rem); line-height: 1.65;
+}
+.prologo p { margin: 0; text-wrap: pretty; }
+.prologo footer {
+  font-style: normal; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--muted);
+}
+.aviso { color: var(--spectre); }
+.regras { display: grid; gap: 18px 24px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); margin: 0; }
+.regras div { border-top: 1px solid var(--line-hi); padding-top: 12px; min-width: 0; }
+.regras dt { font-family: var(--font-display); font-size: 1.35rem; letter-spacing: 0.02em; margin: 0 0 6px; }
+.regras dd { margin: 0; color: var(--muted); font-size: 0.98rem; line-height: 1.5; }
+.camadas { list-style: none; margin: 0; padding: 0; display: grid; gap: 18px; }
+.camada {
+  display: grid; grid-template-columns: minmax(150px, 210px) minmax(0, 1fr); gap: 14px 30px;
+  padding: 20px clamp(16px, 3vw, 28px);
+  border: 1px solid var(--line-hi); background: var(--bg-raise);
+}
+.camada[data-nivel="2"] { border-style: dashed; }
+.camada[data-nivel="3"] {
+  border: 2px solid var(--ring);
+  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.5), 0 0 40px -22px var(--stamp);
+}
+.camada .nivel {
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--mid); margin: 0 0 6px;
+}
+.camada[data-nivel="3"] .nivel { color: var(--stamp); }
+.camada h3 { font-family: var(--font-display); font-weight: 400; font-size: 1.5rem; margin: 0; letter-spacing: 0.02em; }
+.camada p { margin: 0; max-width: 62ch; text-wrap: pretty; }
+.camada .file { margin-top: 18px; max-width: 440px; }
+@media (max-width: 720px) { .camada { grid-template-columns: minmax(0, 1fr); } }
+
 @media (max-width: 720px) {
   .plate { grid-template-columns: minmax(0, 1fr); justify-items: center; text-align: center; border-radius: 40px; }
   .orb-wrap { width: min(100%, 230px); }
