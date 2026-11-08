@@ -34,7 +34,38 @@
     <p class="sub">Criação de personagens e fichas.</p>
   </header>
 
-  <p class="stub">Esta página ainda está sendo escrita.</p>
+  <section class="bloco" aria-labelledby="t-fichas">
+    <h2 id="t-fichas">Investigadores registrados</h2>
+    <ul class="fichas">
+      <li>
+        <article class="cartao" aria-labelledby="n-personagem">
+          <div class="foto-wrap">
+            <!-- Cartão em branco. Para criar outro investigador, copie o bloco <li> inteiro e troque o id n-personagem por um novo.
+                 Para usar uma foto: troque o <svg> abaixo por <img src="fotos/nome.jpg" alt="Nome do personagem"> -->
+            <div class="foto">
+              <svg viewBox="0 0 100 100" role="img" aria-label="Foto indisponível" fill="currentColor">
+                <circle cx="50" cy="38" r="17"/>
+                <path d="M16 100c0-26 16-38 34-38s34 12 34 38z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="cartao-info">
+            <h2 class="nome" id="n-personagem">Nome</h2>
+            <dl class="dados">
+              <div><dt>Idade</dt><dd>—</dd></div>
+              <div><dt>Profissão</dt><dd>—</dd></div>
+              <div><dt>Presença</dt><dd>—</dd></div>
+            </dl>
+            <div class="cartao-links">
+              <!-- Troque o "#" de cada link pelo endereço da página (ex.: href="ficha-nome.html") -->
+              <a href="#">Link 1 →</a>
+              <a href="#">Link 2 →</a>
+            </div>
+          </div>
+        </article>
+      </li>
+    </ul>
+  </section>
 
   <p class="foot">A Terra Invertida · <span class="flip" aria-hidden="true">ɐpıʇɹǝʌuI ɐɹɹǝ⊥ ∀</span></p>
 </main>
