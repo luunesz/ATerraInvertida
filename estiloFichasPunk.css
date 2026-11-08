@@ -148,12 +148,12 @@
 .dado[data-f="6"] i:nth-child(4) { grid-area: 1 / 3; }
 .dado[data-f="6"] i:nth-child(5) { grid-area: 2 / 3; }
 .dado[data-f="6"] i:nth-child(6) { grid-area: 3 / 3; }
-.dado[aria-pressed="true"] { opacity: 0.55; border-style: dashed; }
+.dado[aria-pressed="true"] { opacity: 0.7; }
 .dado[aria-pressed="true"]::after {
   content: ""; position: absolute; inset: 5px;
   background:
-    linear-gradient(to top right, transparent calc(50% - 2px), var(--p-tinta) calc(50% - 2px), var(--p-tinta) calc(50% + 2px), transparent calc(50% + 2px)),
-    linear-gradient(to bottom right, transparent calc(50% - 2px), var(--p-tinta) calc(50% - 2px), var(--p-tinta) calc(50% + 2px), transparent calc(50% + 2px));
+    linear-gradient(to top right, transparent calc(50% - 3px), var(--p-tinta) calc(50% - 3px), var(--p-tinta) calc(50% + 3px), transparent calc(50% + 3px)),
+    linear-gradient(to bottom right, transparent calc(50% - 3px), var(--p-tinta) calc(50% - 3px), var(--p-tinta) calc(50% + 3px), transparent calc(50% + 3px));
 }
 
 /* Feridas: seis caixas em volta de um coração */
@@ -174,17 +174,18 @@
   width: clamp(42px, 11vw, 54px); height: clamp(42px, 11vw, 54px); padding: 0; cursor: pointer; display: grid; place-items: center;
   background: var(--p-claro); color: var(--p-vermelho);
   border: 3px solid var(--p-tinta); border-radius: 8px 4px 9px 5px; box-shadow: 3px 3px 0 var(--p-tinta);
-  transition: background 0.2s ease;
+  transition: background 0.2s ease, transform 0.15s ease;
 }
 .ferida::before {
   content: ""; width: 22px; height: 22px; border: 2px solid currentColor; border-radius: 50% 0 50% 50%;
   transform: rotate(-45deg); opacity: 0.45;
 }
-.ferida[aria-pressed="true"] { background: var(--p-vermelho); }
+.ferida:hover { transform: rotate(-3deg) scale(1.06); }
+.ferida[aria-pressed="true"] { background: var(--p-escuro); box-shadow: inset 0 0 0 4px var(--p-vermelho), 3px 3px 0 var(--p-tinta); }
 .ferida[aria-pressed="true"]::before { background: var(--p-claro); border-color: var(--p-claro); opacity: 1; }
 
 /* Marcadores */
-.marcadores { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.marcadores { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
 .marcador {
   display: grid; grid-template-columns: minmax(0, 1fr); justify-items: center; gap: 4px; min-width: 0; padding: 8px 4px;
   background: var(--p-claro);
@@ -196,7 +197,8 @@
   font-family: var(--p-marcador); font-size: 1.8rem; line-height: 1; color: var(--p-claro); text-shadow: 1px 1px 0 var(--p-tinta);
 }
 .marcador-nome { grid-area: 2 / 1; font-family: var(--p-maquina); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--p-escuro); text-align: center; }
-.marcador .passos { grid-area: 3 / 1; display: flex; gap: 6px; }
+.marcador-faixa { grid-area: 3 / 1; font-family: var(--p-maquina); font-size: 11px; color: var(--p-escuro); opacity: 0.8; }
+.marcador .passos { grid-area: 4 / 1; display: flex; gap: 6px; }
 .marcador button {
   width: 32px; height: 32px; padding: 0; cursor: pointer; border: 0; border-radius: 6px 3px 7px 4px;
   background: var(--p-tinta); color: var(--p-claro); font-family: var(--p-maquina); font-size: 18px; line-height: 1;

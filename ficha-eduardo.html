@@ -41,7 +41,7 @@
         <h1 id="f-nome">Eduardo Carvalho de Souza</h1>
         <dl class="ident">
           <div><dt>Arquétipo</dt><dd>Valentão</dd></div>
-          <div><dt><label for="f-idade">Idade</label></dt><dd><input id="f-idade" data-id="idade" type="text" inputmode="numeric" placeholder="—"></dd></div>
+          <div><dt>Idade</dt><dd>18 anos</dd></div>
         </dl>
       </div>
     </header>
@@ -62,8 +62,8 @@
               <small>arquétipo</small>
             </div>
             <div class="atrib">
-              <label for="a-pressa">Pressa</label>
-              <input id="a-pressa" data-id="atrib-pressa" type="number" min="0" inputmode="numeric" placeholder="—">
+              <label for="a-agilidade">Agilidade</label>
+              <input id="a-agilidade" data-id="atrib-agilidade" type="number" min="0" inputmode="numeric" placeholder="—">
               <small></small>
             </div>
             <div class="atrib">
@@ -72,8 +72,8 @@
               <small></small>
             </div>
             <div class="atrib">
-              <label for="a-razao">Razão</label>
-              <input id="a-razao" data-id="atrib-razao" type="number" min="0" inputmode="numeric" placeholder="—">
+              <label for="a-inteligencia">Inteligência</label>
+              <input id="a-inteligencia" data-id="atrib-inteligencia" type="number" min="0" inputmode="numeric" placeholder="—">
               <small></small>
             </div>
           </div>
@@ -111,31 +111,24 @@
         <section class="sec" aria-labelledby="h-marc">
           <h2 id="h-marc">Marcadores</h2>
           <div class="marcadores">
-            <div class="marcador" data-contador="marc-1">
+            <div class="marcador" data-contador="sequelas" data-max="5">
               <svg viewBox="0 0 60 60" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"><polygon points="30,6 54,18 54,42 30,54 6,42 6,18"/></svg>
-              <span class="marcador-nome">Marcador 1</span>
-              <output aria-label="Valor do marcador 1">0</output>
+              <span class="marcador-nome">Sequelas</span>
+              <span class="marcador-faixa">0 a 5</span>
+              <output aria-label="Valor do sequelas">0</output>
               <div class="passos">
-                <button type="button" data-passo="-1" aria-label="Diminuir marcador 1">−</button>
-                <button type="button" data-passo="1" aria-label="Aumentar marcador 1">+</button>
+                <button type="button" data-passo="-1" aria-label="Diminuir sequelas">−</button>
+                <button type="button" data-passo="1" aria-label="Aumentar sequelas">+</button>
               </div>
             </div>
-            <div class="marcador" data-contador="marc-2">
-              <svg viewBox="0 0 60 60" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"><polygon points="30,8 54,52 6,52"/></svg>
-              <span class="marcador-nome">Marcador 2</span>
-              <output aria-label="Valor do marcador 2">0</output>
-              <div class="passos">
-                <button type="button" data-passo="-1" aria-label="Diminuir marcador 2">−</button>
-                <button type="button" data-passo="1" aria-label="Aumentar marcador 2">+</button>
-              </div>
-            </div>
-            <div class="marcador" data-contador="marc-3">
+            <div class="marcador" data-contador="tensao" data-max="10">
               <svg viewBox="0 0 60 60" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"><path d="M30 6 C34 20 48 26 48 40 A18 18 0 0 1 12 40 C12 30 20 26 22 18 C26 22 28 14 30 6 Z"/></svg>
-              <span class="marcador-nome">Marcador 3</span>
-              <output aria-label="Valor do marcador 3">0</output>
+              <span class="marcador-nome">Pontos de Tensão</span>
+              <span class="marcador-faixa">0 a 10</span>
+              <output aria-label="Valor do pontos de tensão">0</output>
               <div class="passos">
-                <button type="button" data-passo="-1" aria-label="Diminuir marcador 3">−</button>
-                <button type="button" data-passo="1" aria-label="Aumentar marcador 3">+</button>
+                <button type="button" data-passo="-1" aria-label="Diminuir pontos de tensão">−</button>
+                <button type="button" data-passo="1" aria-label="Aumentar pontos de tensão">+</button>
               </div>
             </div>
           </div>
