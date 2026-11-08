@@ -1,0 +1,198 @@
+<!doctype html>
+<!-- A Terra Invertida · feito por Lune, @luunesz -->
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="author" content="Lune (@luunesz)">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Megan Smith · A Terra Invertida</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=IM+Fell+English+SC&family=Spectral:ital,wght@0,300;0,400;1,300;1,400&display=swap">
+<link rel="icon" type="image/png" href="icone1.png">
+<script src="icone.js" defer></script>
+<!-- Segunda versão do visual: troque estiloIndex.css por estiloIndex2.css (em todas as páginas) -->
+<link rel="stylesheet" href="estiloIndex.css">
+<!-- Visual da ficha: estiloFichasPunk.css (rosa e vermelho, estilo punk). Para o visual verde sóbrio, troque por estiloFichas.css -->
+<link rel="stylesheet" href="estiloFichasPunk.css">
+<script src="ficha.js" defer></script>
+</head>
+<body>
+
+<div class="fog" aria-hidden="true"><i></i><i></i></div>
+
+<main class="frame">
+  <nav class="topnav" aria-label="Navegação do site">
+    <a class="back" href="investigadores.html">← Investigadores</a>
+    <ul>
+      <li><a href="mundo.html">O Mundo</a></li>
+      <li><a href="investigadores.html" aria-current="true">Investigadores</a></li>
+      <li><a href="sistema.html">O Sistema</a></li>
+      <li><a href="diario.html">Diário de Campanha</a></li>
+    </ul>
+  </nav>
+
+  <article class="ficha" data-ficha="megan" aria-labelledby="f-nome">
+    <header class="ficha-cab">
+      <!-- A foto é o arquivo MeganSmith.jpg, na mesma pasta desta página. Sem o arquivo, aparece a silhueta. -->
+      <div class="ficha-foto"><svg viewBox="0 0 100 100" aria-hidden="true" fill="currentColor"><circle cx="50" cy="38" r="17"/><path d="M16 100c0-26 16-38 34-38s34 12 34 38z"/></svg><img src="MeganSmith.jpg" alt="Megan Smith" onerror="this.remove()"></div>
+      <div>
+        <p class="ficha-eyebrow">Ficha de investigador</p>
+        <h1 id="f-nome">Megan Smith</h1>
+        <dl class="ident">
+          <div><dt>Arquétipo</dt><dd>Esbelto</dd></div>
+          <div><dt><label for="f-idade">Idade</label></dt><dd><input id="f-idade" data-id="idade" type="text" inputmode="numeric" placeholder="—"></dd></div>
+        </dl>
+      </div>
+    </header>
+
+    <div class="ficha-corpo">
+      <div class="ficha-col">
+        <section class="sec" aria-labelledby="h-atrib">
+          <h2 id="h-atrib">Atributos</h2>
+          <div class="atributos">
+            <div class="atrib">
+              <label for="a-carisma">Carisma</label>
+              <input id="a-carisma" data-id="atrib-carisma" type="number" min="0" inputmode="numeric" placeholder="—">
+              <small></small>
+            </div>
+            <div class="atrib" data-arq>
+              <label for="a-forca">Força</label>
+              <input id="a-forca" data-id="atrib-forca" type="number" min="0" inputmode="numeric" placeholder="—">
+              <small>um dos dois</small>
+            </div>
+            <div class="atrib" data-arq>
+              <label for="a-pressa">Pressa</label>
+              <input id="a-pressa" data-id="atrib-pressa" type="number" min="0" inputmode="numeric" placeholder="—">
+              <small>um dos dois</small>
+            </div>
+            <div class="atrib" data-arq>
+              <label for="a-vigor">Vigor</label>
+              <input id="a-vigor" data-id="atrib-vigor" type="number" min="0" inputmode="numeric" placeholder="—">
+              <small>arquétipo</small>
+            </div>
+            <div class="atrib">
+              <label for="a-razao">Razão</label>
+              <input id="a-razao" data-id="atrib-razao" type="number" min="0" inputmode="numeric" placeholder="—">
+              <small></small>
+            </div>
+          </div>
+          <p class="dica">Os destacados são os atributos do arquétipo.</p>
+        </section>
+
+        <section class="sec" aria-labelledby="h-pilha">
+          <h2 id="h-pilha">Pilha de dados</h2>
+          <div class="pilha">
+            <button type="button" class="dado" data-f="1" data-alternar="dado-1" aria-pressed="false" aria-label="Dado 1 perdido"><i></i></button>
+            <button type="button" class="dado" data-f="2" data-alternar="dado-2" aria-pressed="false" aria-label="Dado 2 perdido"><i></i><i></i></button>
+            <button type="button" class="dado" data-f="3" data-alternar="dado-3" aria-pressed="false" aria-label="Dado 3 perdido"><i></i><i></i><i></i></button>
+            <button type="button" class="dado" data-f="4" data-alternar="dado-4" aria-pressed="false" aria-label="Dado 4 perdido"><i></i><i></i><i></i><i></i></button>
+            <button type="button" class="dado" data-f="5" data-alternar="dado-5" aria-pressed="false" aria-label="Dado 5 perdido"><i></i><i></i><i></i><i></i><i></i></button>
+            <button type="button" class="dado" data-f="6" data-alternar="dado-6" aria-pressed="false" aria-label="Dado 6 perdido"><i></i><i></i><i></i><i></i><i></i><i></i></button>
+          </div>
+          <p class="dica">Toque num dado para marcá-lo como perdido. Toque de novo para recuperá-lo.</p>
+        </section>
+      </div>
+
+      <div class="ficha-col">
+        <section class="sec" aria-labelledby="h-feridas">
+          <h2 id="h-feridas">Feridas</h2>
+          <div class="feridas">
+            <button type="button" class="ferida" data-alternar="ferida-1" aria-pressed="false" aria-label="Ferida 1"></button>
+            <button type="button" class="ferida" data-alternar="ferida-2" aria-pressed="false" aria-label="Ferida 2"></button>
+            <button type="button" class="ferida" data-alternar="ferida-3" aria-pressed="false" aria-label="Ferida 3"></button>
+            <button type="button" class="ferida" data-alternar="ferida-4" aria-pressed="false" aria-label="Ferida 4"></button>
+            <button type="button" class="ferida" data-alternar="ferida-5" aria-pressed="false" aria-label="Ferida 5"></button>
+            <button type="button" class="ferida" data-alternar="ferida-6" aria-pressed="false" aria-label="Ferida 6"></button>
+          </div>
+          <p class="dica">Toque numa ferida para marcá-la.</p>
+        </section>
+
+        <section class="sec" aria-labelledby="h-marc">
+          <h2 id="h-marc">Marcadores</h2>
+          <div class="marcadores">
+            <div class="marcador" data-contador="marc-1">
+              <svg viewBox="0 0 60 60" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"><polygon points="30,6 54,18 54,42 30,54 6,42 6,18"/></svg>
+              <span class="marcador-nome">Marcador 1</span>
+              <output aria-label="Valor do marcador 1">0</output>
+              <div class="passos">
+                <button type="button" data-passo="-1" aria-label="Diminuir marcador 1">−</button>
+                <button type="button" data-passo="1" aria-label="Aumentar marcador 1">+</button>
+              </div>
+            </div>
+            <div class="marcador" data-contador="marc-2">
+              <svg viewBox="0 0 60 60" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"><polygon points="30,8 54,52 6,52"/></svg>
+              <span class="marcador-nome">Marcador 2</span>
+              <output aria-label="Valor do marcador 2">0</output>
+              <div class="passos">
+                <button type="button" data-passo="-1" aria-label="Diminuir marcador 2">−</button>
+                <button type="button" data-passo="1" aria-label="Aumentar marcador 2">+</button>
+              </div>
+            </div>
+            <div class="marcador" data-contador="marc-3">
+              <svg viewBox="0 0 60 60" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round"><path d="M30 6 C34 20 48 26 48 40 A18 18 0 0 1 12 40 C12 30 20 26 22 18 C26 22 28 14 30 6 Z"/></svg>
+              <span class="marcador-nome">Marcador 3</span>
+              <output aria-label="Valor do marcador 3">0</output>
+              <div class="passos">
+                <button type="button" data-passo="-1" aria-label="Diminuir marcador 3">−</button>
+                <button type="button" data-passo="1" aria-label="Aumentar marcador 3">+</button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <div class="ficha-duas">
+      <section class="sec" aria-labelledby="h-hab">
+        <h2 id="h-hab">Habilidade</h2>
+        <p class="meta">Esbelto · Atributos: Vigor e Força ou Agilidade</p>
+        <h3 class="hab-nome">AAAH!</h3>
+        <p>Você é lindo demais ou incrível demais para qualquer fim horrível. Você consegue rerolar um teste para tentar fugir uma vez por encontro. Você pode rerolar mais um teste, mas deve beber um shot.</p>
+      </section>
+
+      <section class="sec" aria-labelledby="h-inv">
+        <h2 id="h-inv">Inventário</h2>
+        <ul class="inv-lista">
+            <li>Camisa do Guns N’ Roses</li>
+            <li>Escova de cabelo rosa</li>
+            <li>Nécessaire</li>
+            <li>Carregador de celular</li>
+        </ul>
+      </section>
+    </div>
+
+    <section class="sec" aria-labelledby="h-sobre">
+      <h2 id="h-sobre">Sobre o personagem</h2>
+      <div class="sobre">
+        <div>
+          <h3>Descrição física</h3>
+          <p>1,65 m de altura, corpo tipo o da Sabrina Carpenter, cabelo liso até a metade das costas, loiro quase dourado, olhos azuis.</p>
+          <h3>Personalidade</h3>
+          <p>Ela e sua família moravam nos Estados Unidos, em um bairro nobre, mas por causa do vício de apostas do pai tiveram que se mudar para o Brasil e viver na classe média baixa, o que é inadmissível para Megan: ela é linda demais para ser pobre, mas infelizmente beleza não paga conta (nem dívidas).</p>
+        </div>
+        <div>
+          <h3>NPCs importantes</h3>
+          <ul class="npcs">
+            <li><strong class="npc-nome">Adam Smith</strong><p>Pai da Megan. Ela o odeia um pouco por deixá-los pobres.</p></li>
+            <li><strong class="npc-nome">Karen Smith</strong><p>Mãe da Megan. Ela acha a mãe legal às vezes, menos quando ela tenta ser adolescente.</p></li>
+            <li><strong class="npc-nome">John Smith</strong><p>Irmão mais novo dela. Ele é fedido e chato.</p></li>
+            <li><strong class="npc-nome">Pamela Rodrigues</strong><p>Melhor amiga de Megan. Na visão da Megan, a única brasileira decente do país.</p></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <footer class="ficha-rodape">
+      <p class="ficha-nota">O que você preenche e marca fica salvo neste navegador.</p>
+      <button type="button" class="limpar" data-limpar>Limpar marcações</button>
+    </footer>
+  </article>
+
+  <p class="foot">A Terra Invertida · <span class="flip" aria-hidden="true">ɐpıʇɹǝʌuI ɐɹɹǝ⊥ ∀</span></p>
+</main>
+
+<p class="credito">Feito por Lune, @luunesz</p>
+
+</body>
+</html>

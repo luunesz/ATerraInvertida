@@ -1,0 +1,174 @@
+/* A Terra Invertida — estilo das fichas de personagem.
+   Feito por Lune, @luunesz.
+   Carregar DEPOIS de estiloIndex.css ou estiloIndex2.css: usa as cores definidas lá,
+   então funciona com as duas versões do visual.
+   Layout: cabeçalho (foto, nome, arquétipo) > duas colunas (atributos e dados | feridas e marcadores)
+   > habilidade e inventário lado a lado > texto sobre o personagem.
+   A estrutura segue a ficha do Brutal RPG; o visual segue o resto do site. */
+
+.ficha {
+  position: relative; min-width: 0;
+  border: 2px solid var(--ring);
+  background: linear-gradient(180deg, rgba(var(--rim-rgb), 0.05), transparent 30%), var(--paper);
+  box-shadow: inset 0 0 80px rgba(0, 0, 0, 0.55), 0 18px 50px -24px rgba(0, 0, 0, 0.9);
+  padding: clamp(18px, 4vw, 44px);
+  display: grid; gap: clamp(24px, 4vw, 40px);
+}
+.ficha::before { content: ""; position: absolute; inset: 6px; border: 1px solid var(--line); pointer-events: none; }
+.ficha button:focus-visible, .ficha input:focus-visible { outline: 2px solid var(--spectre); outline-offset: 2px; }
+
+/* Cabeçalho */
+.ficha-cab {
+  display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 20px clamp(18px, 3vw, 34px); align-items: center;
+  padding-bottom: 24px; border-bottom: 2px solid var(--line-hi);
+}
+.ficha-foto {
+  width: 112px; max-width: 100%; aspect-ratio: 1; border-radius: 50%; overflow: hidden;
+  border: 2px solid var(--ring);
+  background: radial-gradient(circle at 50% 38%, var(--bg-raise), #020302 78%);
+  box-shadow: 0 0 30px -8px rgba(var(--rim-rgb), 0.6), inset 0 0 22px rgba(0, 0, 0, 0.85);
+  color: var(--line-hi);
+}
+.ficha-foto svg, .ficha-foto img { width: 100%; height: 100%; display: block; object-fit: cover; border-radius: 50%; }
+.ficha-eyebrow {
+  margin: 0 0 6px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--mid);
+}
+.ficha-cab h1 { margin: 0 0 14px; font-size: clamp(1.9rem, 5vw, 3rem); line-height: 1.02; text-wrap: balance; }
+.ident { display: flex; flex-wrap: wrap; gap: 8px 28px; margin: 0; }
+.ident div { display: flex; gap: 8px; align-items: baseline; border-bottom: 1px solid var(--line-hi); padding-bottom: 3px; min-width: 0; }
+.ident dt { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
+.ident dd { margin: 0; font-style: italic; }
+.ident input {
+  width: 4.5ch; background: transparent; border: 0; padding: 0; color: var(--ink);
+  font: inherit; font-style: italic;
+}
+.ident input::placeholder { color: var(--muted); }
+
+/* Corpo da ficha */
+.ficha-corpo {
+  display: grid; gap: clamp(24px, 4vw, 40px);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 330px), 1fr));
+}
+.ficha-col { display: grid; gap: 32px; align-content: start; min-width: 0; }
+.sec { display: grid; gap: 14px; min-width: 0; align-content: start; }
+.sec h2 {
+  margin: 0; padding-bottom: 6px; border-bottom: 2px solid var(--line-hi); text-align: center;
+  font-family: var(--font-display); font-weight: 400; font-size: 1.7rem; letter-spacing: 0.03em; color: var(--ink);
+}
+.dica {
+  margin: 0; text-align: center; text-wrap: balance;
+  font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.1em; color: var(--muted);
+}
+
+/* Atributos */
+.atributos { display: grid; grid-template-columns: repeat(auto-fit, minmax(74px, 1fr)); gap: 10px; }
+.atrib {
+  display: grid; gap: 4px; justify-items: center; align-content: start; min-width: 0;
+  padding: 10px 6px 8px; border: 1px solid var(--line-hi); background: var(--bg-raise);
+}
+.atrib label { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
+.atrib input {
+  width: 100%; max-width: 3.2em; text-align: center; background: transparent; border: 0;
+  border-bottom: 1px dashed var(--line-hi); color: var(--ink); padding: 0;
+  font-family: var(--font-display); font-size: 2rem; line-height: 1.2;
+  -moz-appearance: textfield; appearance: textfield;
+}
+.atrib input::-webkit-outer-spin-button, .atrib input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.atrib input::placeholder { color: var(--muted); }
+.atrib small { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid); text-align: center; min-height: 1.2em; }
+.atrib[data-arq] { border-color: var(--ring); box-shadow: 0 0 22px -10px rgba(var(--rim-rgb), 0.9); }
+.atrib[data-arq] label { color: var(--spectre); }
+
+/* Pilha de dados */
+.pilha { display: grid; grid-template-columns: repeat(auto-fit, minmax(54px, 1fr)); gap: 10px; }
+.dado {
+  aspect-ratio: 1; display: grid; grid-template: repeat(3, 1fr) / repeat(3, 1fr); padding: 9px; cursor: pointer;
+  border: 2px solid var(--line-hi); border-radius: 12px; background: var(--bg-raise); color: var(--spectre);
+  transition: opacity 0.2s ease, border-color 0.2s ease;
+}
+.dado i { display: block; width: 72%; aspect-ratio: 1; border-radius: 50%; background: currentColor; place-self: center; }
+.dado[data-f="1"] i:nth-child(1) { grid-area: 2 / 2; }
+.dado[data-f="2"] i:nth-child(1), .dado[data-f="3"] i:nth-child(1), .dado[data-f="4"] i:nth-child(1),
+.dado[data-f="5"] i:nth-child(1), .dado[data-f="6"] i:nth-child(1) { grid-area: 1 / 1; }
+.dado[data-f="2"] i:nth-child(2) { grid-area: 3 / 3; }
+.dado[data-f="3"] i:nth-child(2) { grid-area: 2 / 2; }
+.dado[data-f="3"] i:nth-child(3) { grid-area: 3 / 3; }
+.dado[data-f="4"] i:nth-child(2), .dado[data-f="5"] i:nth-child(2) { grid-area: 1 / 3; }
+.dado[data-f="4"] i:nth-child(3), .dado[data-f="5"] i:nth-child(3) { grid-area: 3 / 1; }
+.dado[data-f="4"] i:nth-child(4), .dado[data-f="5"] i:nth-child(4) { grid-area: 3 / 3; }
+.dado[data-f="5"] i:nth-child(5) { grid-area: 2 / 2; }
+.dado[data-f="6"] i:nth-child(2) { grid-area: 2 / 1; }
+.dado[data-f="6"] i:nth-child(3) { grid-area: 3 / 1; }
+.dado[data-f="6"] i:nth-child(4) { grid-area: 1 / 3; }
+.dado[data-f="6"] i:nth-child(5) { grid-area: 2 / 3; }
+.dado[data-f="6"] i:nth-child(6) { grid-area: 3 / 3; }
+.dado[aria-pressed="true"] { opacity: 0.3; border-style: dashed; color: var(--muted); }
+
+/* Feridas */
+.feridas { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.ferida {
+  width: 48px; height: 48px; padding: 0; cursor: pointer; display: grid; place-items: center;
+  border: 2px solid var(--line-hi); background: var(--bg-raise); color: var(--stamp);
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+.ferida::before {
+  content: ""; width: 20px; height: 20px; border: 2px solid currentColor; border-radius: 50% 0 50% 50%;
+  transform: rotate(-45deg); opacity: 0.5;
+}
+.ferida[aria-pressed="true"] { border-color: var(--stamp); background: color-mix(in srgb, var(--stamp) 16%, var(--bg-raise)); }
+.ferida[aria-pressed="true"]::before { background: currentColor; opacity: 1; box-shadow: 0 0 14px currentColor; }
+
+/* Marcadores */
+.marcadores { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.marcador {
+  display: grid; justify-items: center; gap: 6px; padding: 10px 4px;
+  border: 1px solid var(--line-hi); background: var(--bg-raise); min-width: 0;
+}
+.marcador svg { width: 44px; height: 44px; color: var(--mid); }
+.marcador-nome { font-family: var(--font-mono); font-size: 9.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); text-align: center; }
+.marcador output { font-family: var(--font-display); font-size: 1.9rem; line-height: 1; }
+.marcador .passos { display: flex; gap: 6px; }
+.marcador button {
+  width: 32px; height: 32px; padding: 0; cursor: pointer; font-family: var(--font-mono); font-size: 16px; line-height: 1;
+  border: 1px solid var(--line-hi); background: transparent; color: var(--ink);
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+.marcador button:hover { border-color: var(--ring); color: var(--spectre); }
+
+/* Habilidade e inventário */
+.ficha-duas { display: grid; gap: clamp(24px, 4vw, 40px); grid-template-columns: repeat(auto-fit, minmax(min(100%, 330px), 1fr)); }
+.meta { margin: 0; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+.hab-nome { margin: 0; font-family: var(--font-display); font-weight: 400; font-size: 1.45rem; letter-spacing: 0.02em; color: var(--spectre); }
+.sec p { margin: 0; text-wrap: pretty; max-width: 62ch; }
+.inv-lista { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.inv-lista li { border-bottom: 1px dotted var(--line-hi); padding-bottom: 8px; }
+
+/* Sobre o personagem */
+.sobre { display: grid; gap: 24px clamp(24px, 4vw, 40px); grid-template-columns: repeat(auto-fit, minmax(min(100%, 330px), 1fr)); }
+.sobre > div { display: grid; gap: 6px; align-content: start; min-width: 0; }
+.sobre h3 { margin: 0; font-family: var(--font-mono); font-weight: 400; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mid); }
+.sobre p { margin: 0; text-wrap: pretty; max-width: 62ch; }
+.sobre h3:not(:first-child) { margin-top: 16px; }
+.npcs { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.npcs li { border-top: 1px dotted var(--line-hi); padding-top: 8px; display: grid; gap: 2px; }
+.npc-nome { font-family: var(--font-display); font-size: 1.15rem; letter-spacing: 0.02em; color: var(--spectre); }
+.npcs p { color: var(--ink); }
+
+/* Rodapé da ficha */
+.ficha-rodape { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; border-top: 1px solid var(--line-hi); padding-top: 16px; }
+.ficha-nota { margin: 0; font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.1em; color: var(--muted); max-width: 52ch; }
+.limpar {
+  cursor: pointer; padding: 8px 14px; background: transparent; color: var(--mid);
+  border: 1px solid var(--line-hi); font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.limpar:hover { color: var(--spectre); border-color: var(--ring); }
+
+@media (max-width: 560px) {
+  .ficha-cab { grid-template-columns: minmax(0, 1fr); justify-items: center; text-align: center; }
+  .ident { justify-content: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dado, .ferida, .marcador button, .limpar { transition: none; }
+}
