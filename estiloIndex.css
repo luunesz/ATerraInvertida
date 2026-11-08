@@ -241,58 +241,6 @@ h1 {
 }
 .doc-sign div { flex: 1 1 220px; min-width: 0; border-top: 1px solid var(--line-hi); padding-top: 8px; }
 
-/* Cartões de investigadores */
-.fichas {
-  list-style: none; margin: 0; padding: 0; display: grid; gap: 22px;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 540px), 1fr));
-}
-.fichas > li { min-width: 0; }
-.cartao {
-  position: relative; height: 100%;
-  border: 2px solid var(--ring); border-radius: clamp(28px, 6vw, 64px);
-  padding: clamp(18px, 3vw, 30px) clamp(20px, 3.4vw, 40px);
-  display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 22px clamp(18px, 3vw, 34px); align-items: center;
-  background: radial-gradient(120% 140% at 15% 50%, rgba(var(--rim-rgb), 0.10), transparent 60%), var(--bg-raise);
-  box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.6), 0 0 44px -20px rgba(var(--rim-rgb), 0.7);
-}
-.foto-wrap { position: relative; width: 150px; aspect-ratio: 1; justify-self: center; }
-.foto {
-  width: 100%; height: 100%; border-radius: 50%; overflow: hidden;
-  border: 2px solid var(--ring);
-  background: radial-gradient(circle at 50% 38%, var(--paper), #020302 78%);
-  box-shadow: 0 0 30px -8px rgba(var(--rim-rgb), 0.6), inset 0 0 22px rgba(0, 0, 0, 0.85);
-  color: var(--line-hi);
-}
-.foto svg, .foto img { width: 100%; height: 100%; display: block; object-fit: cover; }
-.selo {
-  position: absolute; right: -14px; bottom: 6px; margin: 0;
-  font-family: var(--font-display); text-transform: uppercase; letter-spacing: 0.16em; font-size: 12px; line-height: 1;
-  color: var(--stamp); border: 2px double var(--stamp); padding: 5px 8px; background: var(--bg-raise);
-  transform: rotate(-8deg);
-}
-.cartao-info { display: grid; gap: 14px; min-width: 0; }
-.cartao-info .nome {
-  font-family: var(--font-display); font-weight: 400; font-size: clamp(1.6rem, 3.4vw, 2.1rem);
-  line-height: 1.05; letter-spacing: 0.02em; text-transform: none; color: var(--ink); margin: 0; text-wrap: balance;
-}
-.dados { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 10px 26px; margin: 0; }
-.dados div { min-width: 0; }
-.dados dt { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
-.dados dd { margin: 2px 0 0; font-size: 1.05rem; }
-.cartao-links { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; padding-top: 12px; border-top: 1px solid var(--line-hi); }
-.cartao-links a {
-  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--mid);
-  padding-block: 4px; border-bottom: 1px solid transparent; transition: color 0.2s ease, border-color 0.2s ease;
-}
-.cartao-links a:hover, .cartao-links a:focus-visible { color: var(--spectre); border-bottom-color: var(--line-hi); }
-@media (max-width: 560px) {
-  .cartao { grid-template-columns: minmax(0, 1fr); justify-items: center; text-align: center; }
-  .cartao-info { justify-items: center; }
-  .dados { grid-template-columns: repeat(3, auto); gap: 10px 18px; justify-content: center; }
-  .cartao-links { justify-content: center; }
-}
-@media (prefers-reduced-motion: reduce) { .cartao-links a { transition: none; } }
-
 /* Página O Mundo */
 .bloco { display: grid; gap: 12px; min-width: 0; }
 .bloco h2 {
