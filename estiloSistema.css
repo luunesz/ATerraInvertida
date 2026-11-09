@@ -1,0 +1,31 @@
+/* A Terra Invertida · feito por Lune, @luunesz
+   Página O Sistema: lista de fontes. Carregar depois de estiloIndex.css ou estiloIndex2.css (usa só as cores delas). */
+.grupo { display: grid; gap: 14px; min-width: 0; }
+.grupo h2 {
+  font-family: var(--font-mono); font-weight: 400; font-size: 12px; letter-spacing: 0.22em;
+  text-transform: uppercase; color: var(--muted); margin: 0;
+}
+.grupo > p { margin: 0; max-width: 62ch; text-wrap: pretty; color: var(--muted); }
+.fontes { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); }
+.fontes li { min-width: 0; display: grid; }
+.fonte {
+  display: grid; gap: 8px; align-content: start; min-width: 0;
+  background: var(--bg-raise); border: 1px solid var(--line); border-top: 2px solid var(--line-hi);
+  border-radius: 14px; padding: 18px 20px 20px;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.fonte .tag { margin: 0; font-size: 11px; letter-spacing: 0.16em; }
+.fonte h3 { margin: 0; font-family: var(--font-display); font-weight: 400; font-size: 1.45rem; line-height: 1.2; letter-spacing: 0.02em; text-wrap: balance; }
+.fonte p { margin: 0; color: var(--muted); font-size: 0.95rem; line-height: 1.5; text-wrap: pretty; }
+.fonte .autor { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.04em; color: var(--mid); }
+.fonte .acao {
+  justify-self: start; margin-top: 6px; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--spectre); border: 1px solid var(--line-hi); border-radius: 999px; padding: 6px 14px;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+a.fonte:hover, a.fonte:focus-visible { border-color: var(--ring); transform: translateY(-2px); }
+a.fonte:hover .acao, a.fonte:focus-visible .acao { background: var(--paper); border-color: var(--ring); }
+.fonte.espera { border-style: dashed; border-top-style: dashed; }
+.fonte.espera h3 { color: var(--muted); }
+.fonte .estado { margin-top: 6px; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+@media (prefers-reduced-motion: reduce) { .fonte, .fonte .acao { transition: none; } a.fonte:hover { transform: none; } }
