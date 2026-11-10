@@ -1,0 +1,50 @@
+/* A Terra Invertida · feito por Lune, @luunesz
+   Página da campanha A Excursão. Carregar depois de estiloIndex.css (ou 2) e de estiloSistema.css (cartões .fonte). Usa só as cores do visual escolhido. */
+.excursao { display: grid; gap: clamp(26px, 4vw, 44px); }
+.aviso-spoiler {
+  margin: 0; max-width: 66ch; padding: 12px 16px; background: var(--paper);
+  border: 1px solid var(--line-hi); border-left: 3px solid var(--stamp); border-radius: 4px 12px 12px 4px;
+  font-size: 0.95rem; line-height: 1.55; color: var(--ink);
+}
+.aviso-spoiler strong { font-family: var(--font-mono); font-weight: 400; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--stamp); display: block; margin-bottom: 2px; }
+
+/* Espécimes */
+.especimes { list-style: none; margin: 0; padding: 0; display: grid; gap: 18px; }
+.especime {
+  display: grid; gap: 18px 24px; grid-template-columns: minmax(0, 190px) minmax(0, 1fr); align-items: start;
+  background: var(--bg-raise); border: 1px solid var(--line); border-top: 2px solid var(--line-hi); border-radius: 14px;
+  padding: clamp(16px, 3vw, 24px);
+}
+.especime.sem-foto { grid-template-columns: minmax(0, 1fr); }
+.especime figure { margin: 0; }
+.especime img { display: block; width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--line-hi); }
+.especime-corpo { display: grid; gap: 10px; min-width: 0; }
+.especime h3 { margin: 0; font-family: var(--font-display); font-weight: 400; font-size: 1.6rem; line-height: 1.2; letter-spacing: 0.02em; }
+.especime p { margin: 0; color: var(--muted); font-size: 0.97rem; line-height: 1.55; max-width: 62ch; text-wrap: pretty; }
+.especime dl { margin: 0; display: grid; gap: 6px 18px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); }
+.especime dl div { min-width: 0; border-top: 1px solid var(--line); padding-top: 6px; }
+.especime dt { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--mid); }
+.especime dd { margin: 2px 0 0; font-size: 0.95rem; color: var(--ink); }
+.estado-chip {
+  justify-self: start; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+  padding: 3px 10px; border-radius: 999px; border: 1px solid var(--line-hi); color: var(--stamp);
+}
+.estado-chip.fim { border-style: dashed; color: var(--muted); }
+
+/* Cronologia */
+.cronologia { list-style: none; margin: 0; padding: 0 0 0 22px; display: grid; gap: 18px; border-left: 1px solid var(--line-hi); }
+.cronologia li { position: relative; display: grid; gap: 2px; min-width: 0; }
+.cronologia li::before { content: ""; position: absolute; left: -28px; top: 6px; width: 11px; height: 11px; border-radius: 50%; background: var(--bg); border: 2px solid var(--stamp); }
+.cronologia time { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mid); }
+.cronologia p { margin: 0; max-width: 62ch; text-wrap: pretty; }
+
+/* Equipe */
+.pessoas { margin: 0; display: grid; gap: 14px 24px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); }
+.pessoas div { border-top: 1px solid var(--line-hi); padding-top: 10px; min-width: 0; }
+.pessoas dt { font-family: var(--font-display); font-size: 1.15rem; line-height: 1.25; }
+.pessoas dd { margin: 2px 0 0; color: var(--muted); font-size: 0.93rem; line-height: 1.45; }
+
+@media (max-width: 560px) {
+  .especime { grid-template-columns: minmax(0, 1fr); }
+  .especime figure { max-width: 240px; }
+}
